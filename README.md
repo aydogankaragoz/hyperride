@@ -1,1 +1,3 @@
-# reride
+# HyperRide
+
+https://hyperride.herokuapp.com
