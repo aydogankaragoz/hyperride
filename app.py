@@ -1,15 +1,18 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
+from sqlalchemy.orm import sessionmaker
 import requests
 import model
 app = Flask(__name__)
 
 def get_session():
     # session is stored in application global
+    print "in get_session"
     if not hasattr(g, 'session'):
         engine = model.connect_db()
         Session = sessionmaker(bind=engine)
         g.session = Session()
+    print "returning g.session"
     return g.session
 
 
