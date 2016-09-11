@@ -28,7 +28,7 @@ def token_exchange():
 
     r = requests.post('https://www.strava.com/oauth/token', data=payload)
     
-    # Parsing the Response
+    # Parsing the Response
     response = r.json()
     id = response['athlete']['id']
     access_token = response['access_token']
@@ -49,7 +49,7 @@ def token_exchange():
     	firstname, lastname, profile_medium, profile,
     	city, state, country, sex, email)
     session.add(new_athlete)
-	session.commit()
+    session.commit()
     return "Registered: " + firstname 
 
 if __name__ == "__main__":
