@@ -57,11 +57,23 @@ def token_exchange():
 
     # Registering
     session = get_session()
-    new_athlete = model.Athlete(id, access_token,
-    	firstname, lastname, profile_medium, profile,
-    	city, state, country, sex, email)
+    print "got session"
+    new_athlete = model.Athlete(id,
+                                access_token,
+                                firstname,
+                                lastname,
+                                profile_medium,
+                                profile,
+                                city,
+                                state,
+                                country,
+                                sex,
+                                email)
+    print "new athlete generated"
     session.add(new_athlete)
+    print "adding session "
     session.commit()
+    print "commiting session "
     return "Registered: " + firstname 
 
 if __name__ == "__main__":
