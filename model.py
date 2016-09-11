@@ -6,9 +6,7 @@ Base = declarative_base()
 
 def connect_db():
     print "in connect-db"
-    print os.environ['DB_URL']
-    print "connecting"
-    return create_engine(os.environ['DB_URL'], echo=False)
+    return create_engine(os.environ['DATABASE_URL'], echo=False)
 
 
 def init_db():
