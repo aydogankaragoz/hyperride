@@ -28,7 +28,6 @@ def token_exchange():
 
     r = requests.post('https://www.strava.com/oauth/token', data=payload)
     
-    # Parsing the Response
     response = r.json()
     id = response['athlete']['id']
     access_token = response['access_token']
