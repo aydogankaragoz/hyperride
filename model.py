@@ -29,12 +29,11 @@ class Athlete(Base):
     sex = Column(String)
     email = Column(String)
 
-    def __init__(self, id, access_token, username, firstname,
+    def __init__(self, id, access_token, firstname,
         lastname, profile_medium, profile, city, state,
-        country, sex, email, created_at, updated_at):
+        country, sex, email):
         self.id = id
         self.access_token = access_token
-        self.username = username
         self.firstname = firstname
         self.lastname = lastname
         self.profile_medium = profile_medium

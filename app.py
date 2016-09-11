@@ -34,13 +34,10 @@ def token_exchange():
     id = response['athlete']['id']
     access_token = response['access_token']
     print access_token 
-
-    username = response['athlete']['username']
-    print username
     firstname = response['athlete']['firstname']
     print firstname
     lastname = response['athlete']['lastname']
-    print lastname
+    #print lastname
     profile_medium = response['athlete']['profile_medium']
     print profile_medium
     profile = response['athlete']['profile']
@@ -58,7 +55,7 @@ def token_exchange():
 
     # Registering
     session = get_session()
-    new_athlete = model.Athlete(id, access_token, username,
+    new_athlete = model.Athlete(id, access_token,
     	firstname, lastname, profile_medium, profile,
     	city, state, country, sex, email)
     session.add(new_athlete)
