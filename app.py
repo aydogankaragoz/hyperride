@@ -20,7 +20,9 @@ def hello():
 
 @app.route("/token_exchange")
 def token_exchange():
+    print "TOKEN EXCHENAGE_medium"
     code = request.args.get('code', '')
+    print code
 
     payload = {'client_id': os.environ['CLIENT_ID'],
                'client_secret': os.environ['CLIENT_SECRET'],
@@ -31,16 +33,28 @@ def token_exchange():
     response = r.json()
     id = response['athlete']['id']
     access_token = response['access_token']
+    print access_token 
+
     username = response['athlete']['username']
+    print username
     firstname = response['athlete']['firstname']
+    print firstname
     lastname = response['athlete']['lastname']
+    print lastname
     profile_medium = response['athlete']['profile_medium']
+    print profile_medium
     profile = response['athlete']['profile']
+    print profile
     city = response['athlete']['city']
+    print city
     state = response['athlete']['state']
+    print state
     country = response['athlete']['country']
+    print country
     sex = response['athlete']['sex']
+    print sex
     email = response['athlete']['email']
+    print email
 
     # Registering
     session = get_session()
