@@ -9,8 +9,11 @@ def get_session():
     # session is stored in application global
     print "in get_session"
     if not hasattr(g, 'session'):
+        print "in if g"
         engine = model.connect_db()
+        print "got engine"
         Session = sessionmaker(bind=engine)
+        print "session made"
         g.session = Session()
     print "returning g.session"
     return g.session
