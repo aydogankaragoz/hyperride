@@ -1,7 +1,7 @@
-from sqlalchemy import Column, String, DateTime, Integer
+import os
+from sqlalchemy import Column, String, DateTime, Integer, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
-import os
 Base = declarative_base()
 
 
@@ -29,10 +29,11 @@ class Athlete(Base):
     country = Column(String)
     sex = Column(String)
     email = Column(String)
+    registered_on = Column(DateTime)
 
     def __init__(self, id, access_token, firstname,
                  lastname, profile_medium, profile, city, state,
-                 country, sex, email):
+                 country, sex, email, registered_on=func.now()):
         self.id = id
         self.access_token = access_token
         self.firstname = firstname
@@ -44,3 +45,4 @@ class Athlete(Base):
         self.country = country
         self.sex = sex
         self.email = email
+        self.registered_on = registered_on
