@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, g
 from sqlalchemy.orm import sessionmaker
 import requests
 import model
+import telegram
 app = Flask(__name__)
 
 
@@ -47,6 +48,7 @@ def token_exchange():
     session = get_session()
 
     if session.query(model.Athlete).get(id):
+        telegram.existingUser(firstname, city)
         return render_template('existing_user.html',
                                firstname=firstname,
                                profile=profile,
@@ -68,6 +70,7 @@ def token_exchange():
                                     email)
         session.add(new_athlete)
         session.commit()
+        telegram.newUser(firstname, city)
         return render_template('new_user.html',
                                firstname=firstname,
                                profile=profile,
