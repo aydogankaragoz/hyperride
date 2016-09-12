@@ -22,9 +22,7 @@ def hello():
 
 @app.route("/token_exchange")
 def token_exchange():
-    print "TOKEN EXCHENAGE_medium"
     code = request.args.get('code', '')
-    print code
 
     payload = {'client_id': os.environ['CLIENT_ID'],
                'client_secret': os.environ['CLIENT_SECRET'],
