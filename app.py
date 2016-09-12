@@ -43,7 +43,7 @@ def token_exchange():
     access_token = response['access_token']
     print access_token 
     firstname = response['athlete']['firstname']
-    print firstname
+    #print firstname
     lastname = response['athlete']['lastname']
     #print lastname
     profile_medium = response['athlete']['profile_medium']
@@ -51,11 +51,11 @@ def token_exchange():
     profile = response['athlete']['profile']
     print profile
     city = response['athlete']['city']
-    print city
+    #print city
     state = response['athlete']['state']
-    print state
+    #print state
     country = response['athlete']['country']
-    print country
+    #print country
     sex = response['athlete']['sex']
     print sex
     email = response['athlete']['email']
