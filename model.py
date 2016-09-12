@@ -4,8 +4,8 @@ from sqlalchemy import create_engine
 import os
 Base = declarative_base()
 
+
 def connect_db():
-    print "in connect-db"
     return create_engine(os.environ['DATABASE_URL'], echo=False)
 
 
@@ -39,8 +39,8 @@ class Athlete(Base):
         self.lastname = lastname
         self.profile_medium = profile_medium
         self.profile = profile
-        self.city = self.city
-        self.state = self.state
-        self.country = self.country
-        self.sex = self.sex
-        self.email = self.email
+        self.city = city
+        self.state = state
+        self.country = country
+        self.sex = sex
+        self.email = email
