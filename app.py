@@ -47,20 +47,36 @@ def token_exchange():
 
     # Registering
     session = get_session()
-    new_athlete = model.Athlete(id,
-                                access_token,
-                                firstname,
-                                lastname,
-                                profile_medium,
-                                profile,
-                                city,
-                                state,
-                                country,
-                                sex,
-                                email)
-    session.add(new_athlete)
-    session.commit()
-    return "Registered: " + firstname
+
+    if session.query(model.Athlete).get(id):
+        return render_template('existing_user.html',
+                               firstname=firstname,
+                               profile=profile,
+                               city=city,
+                               state=state,
+                               country=country,
+                               email=email)
+    else:
+        new_athlete = model.Athlete(id,
+                                    access_token,
+                                    firstname,
+                                    lastname,
+                                    profile_medium,
+                                    profile,
+                                    city,
+                                    state,
+                                    country,
+                                    sex,
+                                    email)
+        session.add(new_athlete)
+        session.commit()
+        return render_template('new_user.html',
+                               firstname=firstname,
+                               profile=profile,
+                               city=city,
+                               state=state,
+                               country=country,
+                               email=email)
 
 if __name__ == "__main__":
     app.run(debug=True)
