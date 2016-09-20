@@ -4,7 +4,9 @@ from sqlalchemy.orm import sessionmaker
 import requests
 import model
 import telegram
+from raven.contrib.flask import Sentry
 app = Flask(__name__)
+sentry = Sentry(app)
 
 
 def get_session():
