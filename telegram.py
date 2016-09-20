@@ -10,10 +10,10 @@ def _sendMessage(text):
 
 
 def newUser(firstname, city):
-    text = firstname + " from " + city + "just joined."
+    text = str(firstname) + " from " + str(city) + "just joined."
     _sendMessage(text)
 
 
 def existingUser(firstname, city):
-    text = firstname + " from " + city + "re-trying."
+    text = str(firstname) + " from " + str(city) + "re-trying."
     _sendMessage(text)
