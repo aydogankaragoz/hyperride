@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 from flask import Flask, render_template, request, g
 from sqlalchemy.orm import sessionmaker
