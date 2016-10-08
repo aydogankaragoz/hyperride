@@ -30,10 +30,12 @@ class Athlete(Base):
     sex = Column(String)
     email = Column(String)
     registered_on = Column(DateTime)
+    last_check = Column(DateTime)
 
     def __init__(self, id, access_token, firstname,
                  lastname, profile_medium, profile, city, state,
-                 country, sex, email, registered_on=func.now()):
+                 country, sex, email, registered_on=func.now(),
+                 last_check=func.now()):
         self.id = id
         self.access_token = access_token
         self.firstname = firstname
@@ -46,3 +48,4 @@ class Athlete(Base):
         self.sex = sex
         self.email = email
         self.registered_on = registered_on
+        self.last_check = last_check
