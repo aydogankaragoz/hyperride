@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request, g, jsonify
 from sqlalchemy.orm import sessionmaker
 import requests
 import model
@@ -86,7 +86,7 @@ def token_exchange():
 @app.route("/webhook")
 def webHook():
     f = {'hub.challenge' : request.args.get('hub.challenge', '')}
-    return flask.jsonify(**f)
+    return jsonify(**f)
 
 
 if __name__ == "__main__":
