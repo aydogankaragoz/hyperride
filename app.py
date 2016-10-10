@@ -3,6 +3,7 @@ import os
 from flask import Flask, render_template, request, g, jsonify
 from sqlalchemy.orm import sessionmaker
 import requests
+import json
 import model
 import telegram
 from raven.contrib.flask import Sentry
@@ -85,19 +86,8 @@ def token_exchange():
 
 @app.route("/webhook", methods=['POST'])
 def webHook():
-    subscription_id = request.args.get('subscription_id', '')
-    owner_id = request.args.get('owner_id', '')
-    object_id = request.args.get('object_id', '')
-    object_type = request.args.get('object_type', '')
-    aspect_type = request.args.get('aspect_type', '')
-    event_time = request.args.get('event_time', '')
-
-    print "geldi"
-    print owner_id
-    print object_id
-    print event_time
-
-    telegram.newActivity(owner_id, object_id, event_time)
+    requestDict = json.loads(request.data)
+    telegram.newActivity(requestDict["owner_id"], requestDict["object_id"], requestDict["event_time"])
     return 'OK'
 
 
