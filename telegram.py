@@ -17,3 +17,7 @@ def newUser(firstname, city):
 def existingUser(firstname, city):
     text = u"{0} from {1} re-trying \n".format(firstname, city)
     _sendMessage(text)
+
+
+def newActivity(owner_id, object_id, event_time):
+    text = u"New activity[{0}] by user[{1}] at: {2} \n".format(owner_id, object_id, event_time)

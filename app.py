@@ -85,8 +85,14 @@ def token_exchange():
 
 @app.route("/webhook")
 def webHook():
-    f = {'hub.challenge' : request.args.get('hub.challenge', '')}
-    return jsonify(**f)
+    subscription_id = request.args.get('subscription_id', '')
+    owner_id = request.args.get('owner_id', '')
+    object_id = request.args.get('object_id', '')
+    object_type = request.args.get('object_type', '')
+    aspect_type = request.args.get('aspect_type', '')
+    event_time = request.args.get('event_time', '')
+
+    telegram.newActivity(owner_id, object_id, event_time)
 
 
 if __name__ == "__main__":
