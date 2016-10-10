@@ -82,5 +82,11 @@ def token_exchange():
                                country=country,
                                email=email)
 
+
+@app.route("/webhook")
+def webHook():
+    return request.args.get('hub.challenge', '')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
