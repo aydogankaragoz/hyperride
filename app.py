@@ -83,7 +83,7 @@ def token_exchange():
                                email=email)
 
 
-@app.route("/webhook")
+@app.route("/webhook", methods=['POST'])
 def webHook():
     subscription_id = request.args.get('subscription_id', '')
     owner_id = request.args.get('owner_id', '')
