@@ -85,7 +85,8 @@ def token_exchange():
 
 @app.route("/webhook")
 def webHook():
-    return {'hub.challenge' : request.args.get('hub.challenge', '')}
+    f = {'hub.challenge' : request.args.get('hub.challenge', '')}
+    return flask.jsonify(**f)
 
 
 if __name__ == "__main__":
