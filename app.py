@@ -92,6 +92,11 @@ def webHook():
     aspect_type = request.args.get('aspect_type', '')
     event_time = request.args.get('event_time', '')
 
+    print "geldi"
+    print owner_id
+    print object_id
+    print event_time
+
     telegram.newActivity(owner_id, object_id, event_time)
 
 
