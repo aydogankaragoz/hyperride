@@ -98,6 +98,7 @@ def webHook():
     print event_time
 
     telegram.newActivity(owner_id, object_id, event_time)
+    return 'OK'
 
 
 if __name__ == "__main__":
