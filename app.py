@@ -42,9 +42,6 @@ def token_exchange():
     lastname = response['athlete']['lastname']
     profile_medium = response['athlete']['profile_medium']
     profile = response['athlete']['profile']
-    city = response['athlete']['city']
-    state = response['athlete']['state']
-    country = response['athlete']['country']
     sex = response['athlete']['sex']
     email = response['athlete']['email']
 
@@ -52,13 +49,10 @@ def token_exchange():
     session = get_session()
 
     if session.query(model.Athlete).get(id):
-        telegram.existingUser(firstname, city)
+        telegram.existingUser(firstname, lastname)
         return render_template('existing_user.html',
                                firstname=firstname,
                                profile=profile,
-                               city=city,
-                               state=state,
-                               country=country,
                                email=email)
     else:
         new_athlete = model.Athlete(id,
@@ -67,20 +61,14 @@ def token_exchange():
                                     lastname,
                                     profile_medium,
                                     profile,
-                                    city,
-                                    state,
-                                    country,
                                     sex,
                                     email)
         session.add(new_athlete)
         session.commit()
-        telegram.newUser(firstname, city)
+        telegram.newUser(firstname, lastname)
         return render_template('new_user.html',
                                firstname=firstname,
                                profile=profile,
-                               city=city,
-                               state=state,
-                               country=country,
                                email=email)
 
 

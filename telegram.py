@@ -9,13 +9,13 @@ def _sendMessage(text):
     r = requests.post(url, data=payload)
 
 
-def newUser(firstname, city):
-    text = u"{0} from {1} just joined.\n".format(firstname, city)
+def newUser(firstname, lastname):
+    text = u"{0} {1} just joined.\n".format(firstname, lastname)
     _sendMessage(text)
 
 
-def existingUser(firstname, city):
-    text = u"{0} from {1} re-trying \n".format(firstname, city)
+def existingUser(firstname, lastname):
+    text = u"{0} {1} re-trying \n".format(firstname, lastname)
     _sendMessage(text)
 
 
