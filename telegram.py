@@ -19,6 +19,6 @@ def existingUser(firstname, lastname):
     _sendMessage(text)
 
 
-def newActivity(owner_id, object_id, event_time):
-    text = u"New activity[{0}] by user[{1}] at: {2} \n".format(owner_id, object_id, event_time)
+def newActivity(firstname, lastname, activity):
+    text = u"New activity by {0} {1}, activity id=  {2} \n".format(firstname, lastname, activity)
     _sendMessage(text)

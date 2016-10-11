@@ -75,7 +75,14 @@ def token_exchange():
 @app.route("/webhook", methods=['POST'])
 def webHook():
     requestDict = json.loads(request.data)
-    telegram.newActivity(requestDict["owner_id"], requestDict["object_id"], requestDict["event_time"])
+
+    owner_id = requestDict["owner_id"]
+    activity_id = requestDict["object_id"]
+
+    session = get_session()
+    athlete = session.query(model.Athlete).get(owner_id)
+
+    telegram.newActivity(athlete.firstname, athlete.lastname, activity_id)
     return 'OK'
 
 
