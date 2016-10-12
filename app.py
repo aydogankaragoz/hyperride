@@ -7,8 +7,11 @@ import json
 import model
 import telegram
 from raven.contrib.flask import Sentry
+from rq import Queue
+from worker import conn
 app = Flask(__name__)
 sentry = Sentry(app, dsn=os.environ['SENTRY_DSN'])
+q = Queue(connection=conn)
 
 
 def get_session():
@@ -79,10 +82,10 @@ def webHook():
     owner_id = requestDict["owner_id"]
     activity_id = requestDict["object_id"]
 
-    session = get_session()
-    athlete = session.query(model.Athlete).get(owner_id)
+    from generators import analyse_activity
 
-    telegram.newActivity(athlete.firstname, athlete.lastname, activity_id)
+    q.enqueue(analyse_activity, owner_id, activity_id)
+
     return 'OK'
 
 
