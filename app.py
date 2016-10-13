@@ -81,10 +81,11 @@ def webHook():
 
     owner_id = requestDict["owner_id"]
     activity_id = requestDict["object_id"]
+    session = get_session()
 
     from generators import analyse_activity
 
-    q.enqueue(analyse_activity, owner_id, activity_id)
+    q.enqueue(analyse_activity, session, owner_id, activity_id)
 
     return 'OK'
 
